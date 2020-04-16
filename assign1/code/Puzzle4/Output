@@ -1,0 +1,64 @@
+0 1 3
+7 2 6
+5 4 8
+
+
+private void printSolution(Node finalNode) {
+		// TODO Auto-generated method stub
+		Node preNode = null;
+		preNode = finalNode;
+		String tempini = null;
+		String tempfini = null;
+		finalStack.push(preNode);
+		while(!(preNode.getParent().getState().equals(root.getState()))) {
+			finalStack.push(preNode.getParent());
+			preNode = preNode.getParent();
+		}
+		finalStack.push(preNode.getParent());
+		while(!finalStack.isEmpty()) {
+			tempfini = finalStack.pop().getState();
+			printMovement(tempini, tempfini);
+			printStack(tempfini);
+			System.out.println("");
+			System.out.println("");
+			tempini = tempfini;
+			System.out.println(tempini);
+		}
+	}
+
+	private void printMovement(String tempini, String tempfini) {
+		// TODO Auto-generated method stub
+		char first = '0', second = '0';
+		System.out.println(tempini);
+		for(int i=0;i<tempfini.length();i++) {
+			System.out.println(tempini.charAt(i));
+			if(!(tempini.charAt(i) == tempfini.charAt(i)) && tempfini.charAt(i) =='0') {
+				if(tempini.charAt(i) == '0')
+				first = tempini.charAt(i);
+				else
+					first = tempfini.charAt(i);
+			}
+			
+			if(!(tempini.charAt(i) == tempfini.charAt(i)) && tempini.charAt(i) =='0') {
+				if(tempini.charAt(i) == '0')
+				second = tempini.charAt(i);
+				else
+					second = tempfini.charAt(i);
+			}
+		}
+		
+		System.out.println("Move " + first + " to " + second);
+	}
+	private void printStack(String pop) {
+		// TODO Auto-generated method stub
+		//String str = pop.getState();
+		for(int i=0;i<pop.length();i++) {
+			if(i==2 || i ==5) 
+				System.out.println(pop.charAt(i) + " ");
+			else
+				System.out.print( pop.charAt(i) + " ");
+
+		}
+
+	}
+
